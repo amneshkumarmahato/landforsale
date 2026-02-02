@@ -215,6 +215,40 @@ body {
   transition: transform 0.32s ease, filter 0.32s ease;
 }
 
+/* Gallery inside property listing */
+.property-single.gallery {
+  align-items: flex-start;
+  gap: 24px;
+}
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  width: 100%;
+  max-width: 520px;
+}
+.gallery-grid img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  cursor: pointer;
+}
+.gallery-grid img:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0,0,0,0.12); }
+
+@media (min-width: 1000px) {
+  .property-single.gallery { display: grid; grid-template-columns: 1fr 420px; align-items: start; }
+  .gallery-grid img { height: 120px; }
+}
+
+@media (max-width: 768px) {
+  .gallery-grid { grid-template-columns: 1fr 1fr; max-width: 100%; }
+  .gallery-grid img { height: 110px; }
+  .property-single.gallery { gap: 12px; padding: 18px; }
+}
+
 .property-single img:hover { transform: scale(1.03); filter: saturate(1.05); }
 
 .property-details {
@@ -410,38 +444,40 @@ footer {
     font-size: 0.9rem;
   }
 
-  /* Right Sidebar Menu - Mobile Bottom Floating Bar */
+  /* Right Sidebar Menu - Mobile Right Floating Bar */
   .right-sidebar-menu {
     position: fixed;
-    right: auto;
-    left: 50%;
-    top: auto;
-    bottom: 12px;
-    transform: translateX(-50%);
-    flex-direction: row;
-    gap: 10px;
-    background: rgba(255,255,255,0.96);
-    padding: 8px 12px;
-    border-radius: 999px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+    right: 12px;
+    left: auto;
+    top: 50%;
+    bottom: auto;
+    transform: translateY(-50%);
+    flex-direction: column;
+    gap: 12px;
+    background: transparent;
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none;
     z-index: 998;
     display: flex !important;
   }
 
   .menu-item {
-    width: 48px;
-    height: 48px;
-    padding: 6px;
-    box-shadow: none;
-    border: none;
+    width: 56px;
+    height: 56px;
+    padding: 10px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+    border-radius: 50%;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .menu-item .label { display: none; }
 
   .menu-item:hover {
-    width: 48px;
-    border-radius: 50%;
-    padding: 6px;
+    transform: scale(1.03);
   }
 
   /* Contact Section */
